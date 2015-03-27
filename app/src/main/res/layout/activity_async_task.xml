@@ -7,13 +7,23 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="We just started an AsyncTask and its running right now. Jump into AndroidStudio and pull up the Memory Monitor."
-        android:padding="10dp"/>
+        android:text="
+We just started an AsyncTask and its running right now. Jump into AndroidStudio and pull up the Memory Monitor.\n\n
 
+Once you have the MemoryMonitor pulled up, start rotating your phone back and forth between portrait and landscape. From inside MemoryMonitor, periodically trigger a Garbage Collection. \n\n
+
+You should see that even though you are periodically garbage collecting, you are still leaking memory. This is because your AsyncTasks has a Thread. A running thread will never get GC'd. Because the Thread holds a reference the AsyncTask, it will never get GC'd either. Because the AsyncTask holds a reference to this Activity, it won't get GC'd either.\n\n
+
+So every time you rotate your device and destroy this Activity it will become a Zombie Activity.\n\n
+
+You can also check the log statements by filtering for the tag : "
+        android:padding="10dp"/>
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/activity_async_task_tag_name"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Once you have the MemoryMonitor pulled up, start rotating your phone back and forth between portrait and landscape. From inside MemoryMonitor, periodically trigger a Garbage Collection"
-        android:padding="10dp"/>
+        android:layout_gravity="center"
+        android:textStyle="bold"/>
+
 </LinearLayout>

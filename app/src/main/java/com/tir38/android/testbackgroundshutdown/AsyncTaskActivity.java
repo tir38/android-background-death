@@ -3,6 +3,7 @@ package com.tir38.android.testbackgroundshutdown;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 public class AsyncTaskActivity extends LoggableActivity {
 
@@ -18,13 +19,16 @@ public class AsyncTaskActivity extends LoggableActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_async_task);
 
+        TextView tagTextView = (TextView) findViewById(R.id.activity_async_task_tag_name);
+        tagTextView.setText(TAG);
+
         MyAsyncTask asyncTask = new MyAsyncTask();
         asyncTask.execute();
     }
 
     private class MyAsyncTask extends AsyncTask {
 
-        private final String TAG = MyAsyncTask.class.getSimpleName();
+        private final String TAG = AsyncTaskActivity.TAG + " : " + MyAsyncTask.class.getSimpleName();
 
         protected Object doInBackground(Object[] params) {
 
