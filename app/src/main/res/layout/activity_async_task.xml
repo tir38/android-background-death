@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="
-We just started an AsyncTask and its running right now. Jump into AndroidStudio and pull up the Memory Monitor.\n\n
+We just started an AsyncTask, hosted by this Activity and its running right now. Jump into Android Studio and pull up the Memory Monitor.\n\n
 
 Once you have the MemoryMonitor pulled up, start rotating your phone back and forth between portrait and landscape. From inside MemoryMonitor, periodically trigger a Garbage Collection. \n\n
 
